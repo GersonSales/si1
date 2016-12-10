@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html ng-app>
+
+<head>
+	<title>Minha primeira pagina web</title>
+	<link rel="stylesheet" type="text/css" href="css/mycss.css">
+</head>
+
+<body>
+
+	<div>
+		<ul class="menuBar">
+			<li><a href="index.html">Home</a></li>
+  			<li><a href="pages/news.html">News</a></li>
+  			<li><a href="pages/contact.html">Contact</a></li>
+  			<li><a href="pages/about.html">About</a></li>
+		</ul>
+	</div>
+
+
+
+	<div class="todoWrapper" ng-controller="behaviorController">
+		<div class="progress">
+     		<div class="progress-bar" role="progressbar" aria-valuenow="{{percentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentage()}}%;">{{percentage()}}%</div>
+   		</div>
+
+		<h2 class="head">You've got <span class="emphasis">{{getTotal()}}</span> things to do.</h2>
+
+		<div>
+			<form>
+				<input type="text" placeholder=" Add your task here" name="textInputs" ng-model="textInput"/>
+				<button class="btn btn-secondary" type="addButton" ng-disabled="!textInput" ng-click="addTodo()">add</button>
+			</form>
+		</div>
+
+		<div>
+			<ul>
+				<li ng-repeat="todo in todos" class="todo favorite-{{todo.favorite}} done-{{todo.done}}">
+					<input class="test" type="checkbox" name="taskTodo" ng-model="todo.done"/>
+					<input alt="asda" ng-disabled="todo.done"type="checkbox" name="favorite" ng-model="todo.favorite" ng-change="sort()">
+					<span class="done-{{todo.done}}">{{todo.text}}</span>
+				</li>
+			</ul>
+
+		</div>
+
+		
+
+		<button class="btn btn-secondary" type="button" ng-click="clearCompleted()">Clear completed</button>
+		<button class="btn btn-secondary" type="clearButton" ng-click="clearAll()">clear all</button>
+
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script type="text/javascript" src="js/behavior.js"></script>
+
+</body>
+
+</html>
