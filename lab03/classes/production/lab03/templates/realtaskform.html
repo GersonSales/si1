@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!--<meta charset="UTF-8"/>-->
+    <title>Real Task Form</title>
+    <th:block th:include="fragments/menu :: menu"></th:block>
+    <th:block th:include="general/head :: head"></th:block>
+
+
+
+</head>
+<body>
+
+    <form th:action="@{addRealTask}" method="post">
+        <input type="hidden" name="id"/>
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Title" name="title"/>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+        </div>
+
+
+        <!--<textarea name="description">Description</textarea>-->
+
+        <div class="form-group">
+            <label for="bankName">Bank names</label>
+            <select class="form-control" id="bankName" name="bankName">
+                <option th:each="bank : ${bankNames}" th:value="${bank}" th:text="${bank}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category" name="category">
+                <option th:each="category : ${categoryList}" th:value="${category}" th:text="${category}"></option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="priority">Priority</label>
+            <select class="form-control" id="priority" name="priority">
+                <option value="NONE" selected="">Priority</option>
+
+                <option value="LOW">Low</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HIGH">High</option>
+            </select>
+        </div>
+
+        <th:block th:include="fragments/subtaskform :: subTaskForm"></th:block>
+
+
+        <input type="submit" value="Save" class="btn btn-primary"/>
+    </form>
+
+</body>
+</html>

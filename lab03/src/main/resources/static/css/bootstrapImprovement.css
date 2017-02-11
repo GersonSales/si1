@@ -1,0 +1,83 @@
+.active{
+    padding: 5px 15px; /* adjust here */
+    line-height: 1em /* set to text height */
+}
+
+
+.div_teste{
+    width:700px;
+    height:500px;
+    position:absolute;
+    z-index:100;
+    top:50px;
+    margin-left:300px;
+}
+#categoryPop{
+    display:none;
+    position:static;
+    top:25%;
+    left:auto;
+    padding:10px;
+    width:200px;
+    height:100px;
+    border:1px solid rgba(49, 71, 208, 0);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.73);
+}
+
+
+#taskBankPop{
+    display:none;
+    position:static;
+    top:25%;
+    left:auto;
+    padding:10px;
+    width:200px;
+    height:100px;
+    border:1px solid rgba(49, 71, 208, 0);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.73);
+}
+
+#realTaskPop{
+    display:none;
+    position:static;
+    top:25%;
+    left:auto;
+    padding:10px;
+    width:200px;
+    height:100px;
+    border:1px solid rgba(49, 71, 208, 0);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.73);
+}
+
+div[id$="51"]{
+    display:none;
+    position:absolute;
+    top:25%;
+    left:auto;
+    padding:10px;
+    width:100%;
+    height:500px;
+    border:1px solid rgba(49, 71, 208, 0);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.73);
+    text-decoration-color: white;
+}
+
+span.checked-true {
+    text-decoration: line-through;
+}
+
+label.priority-High {
+    color: #d43f3a;
+}
+
+label.priority-Medium {
+    color: gold;
+}
+
+label.priority-Low {
+    color: lightgreen;
+}

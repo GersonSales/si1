@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" ng-app="todoApp">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Task List</title>
+    <th:block th:include="fragments/menu :: menu"></th:block>
+    <th:block th:include="fragments/categorymenu :: categoryMenu"></th:block>
+    <th:block th:include="fragments/taskbankmenu :: taskBankMenu"></th:block>
+    <th:block th:include="fragments/prioritymenu :: priorityMenu"></th:block>
+    <th:block th:include="general/head :: head"></th:block>
+</head>
+<body>
+    <h1 th:text="${listName}"></h1>
+    <table>
+        <thead>
+            <td>ID</td>
+            <td><a th:href="@{'/task/sortByName'}" th:text="Name"></a></td>
+            <td>Description</td>
+            <td>isChecked</td>
+            <td>Category</td>
+            <td><a th:href="@{'/task/sortByPriority'}" th:text="Priority"></a></td>
+            <td>Creation Date</td>
+            <td>Action</td>
+            <td>Action</td>
+        </thead>
+
+        <tbody ng-controller="appController">
+            <tr th:each="task : ${taskList}">
+                <td th:text="${task.id}"></td>
+                <td><a th:href="@{'/task/showRealTask?id=' + ${task.id}}" th:text="${task.title}"></a></td>
+                <td th:text="${task.description}"></td>
+                <td th:text="${task.checked}"></td>
+                <td th:text="${task.category}"></td>
+                <td th:text="${task.priority}"></td>
+                <td th:text="${task.creationDate}"></td>
+
+                <td><a th:href="@{'/task/showRealTask?id=' + ${task.id}}">Edit</a></td>
+                <td><a th:href="@{'/task/removeRealTask?id=' + ${task.id}}">Remove</a></td>
+                <td><input type="checkbox" th:attr="ng-model='${task.checked}'"/></td>
+
+            </tr>
+
+        </tbody>
+
+
+    </table>
+</body>
+</html>

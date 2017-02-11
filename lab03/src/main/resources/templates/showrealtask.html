@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Show Real Task</title>
+    <th:block th:include="fragments/menu :: menu"></th:block>
+    <th:block th:include="/general/head :: head"></th:block>
+</head>
+<body>
+<div th:fragment="showRealTask" style="text-decoration-color: white">
+    <h2>
+        [<label th:text="${task.category}"></label>]
+        <label th:text="${task.title}"></label>
+        <label style="font-size: 10px">Priority: </label>
+        <label th:text="${task.priority}" th:class="'priority-' + ${task.priority}"></label>
+    </h2>
+    <label th:text="'Creation date: ' + ${task.creationDate}"></label>
+    <br/>
+    <div th:if="${task.checkDate} != null">
+        <label th:text="'Check date: ' + ${task.checkDate}"></label>
+    </div>
+
+
+    <h5>Description</h5>
+    <h4 th:text="${task.description}"></h4>
+
+    <h5>SubTasks</h5>
+    <ul>
+        <li th:each="subTask : ${task.subTaskList}">
+            <span th:text="${subTask.title}" th:class="'checked-' + ${subTask.checked}"></span>
+            <a th:href="@{'/task/checkSubTask?id=' + ${subTask.id}}">
+                <i class="fa fa-check-square-o"></i>
+            </a>
+
+            <!--<input type="checkbox" name="name" th:checked="${subTask.checked}"/>-->
+
+        </li>
+    </ul>
+
+</div>
+</body>
+</html>
